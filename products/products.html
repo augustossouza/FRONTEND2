@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Produtos</title>
+  <link rel="stylesheet" href="../assets/css/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="brand">
+      <a href="../index.html"><img src="../assets/img/logo.svg" alt="Minha Loja" class="logo"></a>
+    </div>
+    <nav class="main-nav">
+      <a href="../index.html">Início</a>
+      <a href="../users/users.html">Usuários</a>
+      <a href="products.html">Produtos</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <h1>Produtos</h1>
+
+    <!-- (Removido) Formulário antigo de adicionar produto — mantemos apenas a busca/filtragem avançada abaixo -->
+
+    <!-- Floating add button + Modal form (hidden) -->
+    <button id="add-product-btn" class="fab" aria-label="Adicionar produto">+</button>
+
+    <div id="product-modal" class="modal" aria-hidden="true">
+      <div class="modal-content" role="dialog" aria-modal="true" aria-label="Adicionar produto">
+        <button class="modal-close" id="close-product-modal" aria-label="Fechar">×</button>
+        <form id="product-form" novalidate>
+          <input type="text" id="title" placeholder="Título" required minlength="3" maxlength="50">
+          <input type="text" id="description" placeholder="Descrição" required minlength="3" maxlength="50">
+          <input type="number" id="price" placeholder="Preço" required min="0.01" step="0.01">
+          <input type="text" id="brand" placeholder="Marca" required minlength="3" maxlength="50">
+          <input type="text" id="category" placeholder="Categoria" required minlength="3" maxlength="50">
+          <input type="url" id="thumbnail" placeholder="URL da foto (opcional)">
+          <button type="submit">Adicionar</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Search and Filter Section -->
+    <div class="search-filter-section">
+      <input type="text" id="search-input" placeholder=" Buscar por título, marca ou categoria..." class="search-input">
+      <div class="filter-controls">
+        <input type="number" id="price-min" placeholder="Preço mín." min="0" class="filter-input">
+        <input type="number" id="price-max" placeholder="Preço máx." min="0" class="filter-input">
+        <button id="clear-filters" class="clear-btn">Limpar Filtros</button>
+      </div>
+    </div>
+
+    <ul id="products-list"></ul>
+  </main>
+
+  <script src="../assets/js/utils.js"></script>
+  <script src="products.js"></script>
+  <script>
+    (function(){
+      try{
+        const links = document.querySelectorAll('.main-nav a');
+        links.forEach(a => { if (a.href === location.href || a.href === location.pathname || a.getAttribute('href') === location.pathname.split('/').pop()) a.classList.add('active'); });
+      }catch(e){}
+    })();
+  </script>
+</body>
+</html>

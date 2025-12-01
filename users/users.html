@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Usuários</title>
+  <link rel="stylesheet" href="../assets/css/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="brand">
+      <a href="../index.html"><img src="../assets/img/logo.svg" alt="Minha Loja" class="logo"></a>
+    </div>
+    <nav class="main-nav">
+      <a href="../index.html">Início</a>
+      <a href="users.html">Usuários</a>
+      <a href="../products/products.html">Produtos</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <h1>Usuários</h1>
+
+    <form id="user-form" novalidate>
+      <input type="text" id="firstName" placeholder="Nome" required minlength="3" maxlength="50">
+      <input type="text" id="lastName" placeholder="Sobrenome" required minlength="3" maxlength="50">
+      <input type="email" id="email" placeholder="Email" required>
+      <input type="number" id="age" placeholder="Idade" required min="1" max="119">
+      <input type="url" id="image" placeholder="URL da foto (opcional)">
+      <button type="submit">Adicionar</button>
+    </form>
+
+    <ul id="users-list"></ul>
+  </main>
+
+  <script src="../assets/js/utils.js"></script>
+  <script src="users.js"></script>
+  <script>
+    // marca link ativo no menu
+    (function(){
+      try{
+        const links = document.querySelectorAll('.main-nav a');
+        links.forEach(a => { if (a.href === location.href || a.href === location.pathname || a.getAttribute('href') === location.pathname.split('/').pop()) a.classList.add('active'); });
+      }catch(e){}
+    })();
+  </script>
+</body>
+</html>

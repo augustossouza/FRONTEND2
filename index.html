@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Loja - Início</title>
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="brand">
+      <a href="index.html"><img src="assets/img/logo.svg" alt="Minha Loja" class="logo"></a>
+    </div>
+    <nav class="main-nav">
+      <a href="index.html">Início</a>
+      <a href="users/users.html">Usuários</a>
+      <a href="products/products.html">Produtos</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <h1>Bem-vindo à Loja</h1>
+    <p>A melhor experiência em compras, com produtos selecionados e preços especiais. Confira nossas ofertas e aproveite!</p>
+    <section id="featured-products"></section>
+  </main>
+
+  <script src="assets/js/utils.js"></script>
+  <script src="main.js"></script>
+  <script>
+    (function(){
+      try{
+        const links = document.querySelectorAll('.main-nav a');
+        links.forEach(a => { if (a.href === location.href || a.href === location.pathname || a.getAttribute('href') === location.pathname.split('/').pop()) a.classList.add('active'); });
+      }catch(e){}
+    })();
+  </script>
+</body>
+</html>
